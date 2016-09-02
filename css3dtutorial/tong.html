@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>perspective</title>
+	<style>
+	body,html{
+		padding: 0;
+		margin: 0;
+		height: 100%;
+	}
+	body{
+		display: flex;
+    	height: 100%;
+	}
+	html{
+		--trans-z:100px;
+		--trans-root-r:18deg;
+	}
+	#container{
+		margin: auto;
+		perspective: 300px;
+		transform-style: preserve-3d;
+	}
+	.item{
+		width: 40px;
+		height: 200px;
+		position: absolute;
+		background-color: #F00;
+		opacity: 0.7;
+		top: calc(50% - 100px);
+    	left: calc(50% - 40px);
+    	transform: rotateY(var(--trans-r)) translate3d(0px, 0px, var(--trans-z));
+	}
+	.ani .item{
+		animation: roll 5s linear infinite;
+	}
+	.item-1 {
+		--trans-r:0deg;
+	}
+
+	.item-2 {  
+		--trans-r:36deg;    
+	}
+
+	.item-3 {    
+		--trans-r:72deg;   
+	}
+
+	.item-4 {
+		--trans-r:108deg;
+	}
+
+	.item-5 {
+		--trans-r:144deg;
+	}
+
+	.item-6 {
+		--trans-r:180deg;
+	}
+
+	.item-7 {
+		--trans-r:216deg;
+	}
+
+	.item-8 {
+		--trans-r:252deg;
+	}
+
+	.item-9 {
+		--trans-r:288deg;
+	}
+
+	.item-10 {
+		--trans-r:324deg;
+	}
+	
+	@keyframes roll {
+	  form {
+	    transform: rotateY(var(--trans-r)) translate3d(0px, 0px, var(--trans-z));
+	  }
+	  to {
+	    transform: rotateY(calc(var(--trans-r) + 360deg)) translate3d(0px, 0px, var(--trans-z));
+	  }
+	}
+	
+	.control{
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="item item-1"></div>
+		<div class="item item-2"></div>
+		<div class="item item-3"></div>
+		<div class="item item-4"></div>
+		<div class="item item-5"></div>
+		<div class="item item-6"></div>
+		<div class="item item-7"></div>
+		<div class="item item-8"></div>
+		<div class="item item-9"></div>
+		<div class="item item-10"></div>
+	</div>
+	<div class="control">
+		<input type="range" id="range" min="0" max="100">
+		<br>
+		<input type="checkbox" id="ani"><label for="ani">动起来</label>
+	</div>
+	<script>
+		var range = document.querySelector('#range');
+		var checkbox = document.querySelector('#ani');
+		var html = document.querySelector('html');
+		var container = document.querySelector('#container');
+		range.addEventListener('change', function() {
+			html.style.setProperty('--trans-z',parseInt(this.value)+50+'px');
+		});
+		checkbox.addEventListener('change', function() {
+			if (this.checked) {
+				container.className = "ani"
+			}else{
+				container.className = ""
+			}
+		});
+	</script>
+</body>
+</html>

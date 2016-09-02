@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>base</title>
+	<style>
+	body,html{
+		padding: 0;
+		margin: 0;
+		height: 100%;
+	}
+	body{
+		display: flex;
+    	height: 100%;
+	}
+	.container{
+		margin: auto;
+		perspective: 300px;
+		transform-style: preserve-3d;
+	}
+	.d3d{
+		width: 100px;
+	    height: 100px;
+	    background-color: #FF0;
+	    margin: auto;
+	    opacity: 0.7;
+	    transform: rotateY(30deg);
+	    transform-style: preserve-3d;
+	}
+	.d3d2{
+		width: 100px;
+	    height: 100px;
+	    background-color: #F00;
+	    margin: auto;
+	    opacity: 0.7;
+	    transform: rotateY(30deg);
+	}
+	.d3d3{
+	    width: 100px;
+	    height: 100px;
+	    background-color: #0FF;
+	    margin: auto;
+	    opacity: 0.7;
+	    transform: rotateY(30deg);
+	    transform-style: preserve-3d;
+	    position: absolute;
+	    top: calc(50% - 50px);
+	    transform: translateZ(-13PX);
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="d3d">
+			<div class="d3d2"></div>
+		</div>
+		<div class="d3d3"></div>
+	</div>
+</body>
+</html>
